@@ -1,0 +1,8 @@
+public static void FindingPerimeterAndAreaOfRectangle() {
+        int SideA = 2;
+        int SideB = 6;
+        int Perimeter = 2 * (SideA + SideB);
+        int Area = SideA * SideB;
+        System.out.println("Лице : " + Area);
+        System.out.println("Обиколка :" + Perimeter);
+    }
