@@ -1,0 +1,66 @@
+public class Main {
+
+    public static void main(String[] args) {
+        FindingPerimeterAndAreaOfRectangle();
+        Lover();
+    }
+
+    public static void FindingPerimeterAndAreaOfRectangle() {
+        int SideA = 2;
+        int SideB = 6;
+        int Perimeter = 2 * (SideA + SideB);
+        int Area = SideA * SideB;
+        System.out.println("Лице : " + Area);
+        System.out.println("Обиколка :" + Perimeter);
+    }
+
+
+
+    public static void Lover() {
+        int floorNumber = 0;
+        String Floor;
+
+        switch (floorNumber) {
+            case 9:
+                System.out.println("Здравей Мими");
+                break;
+            case 8:
+                System.out.println("Здравей Пепи");
+                break;
+            case 7:
+                System.out.println("Здравей Ванче");
+                break;
+
+            case 6:
+                System.out.println("Здравей Ели");
+                break;
+
+            case 5:
+                System.out.println("Здравей Ивче");
+                break;
+
+            case 4:
+                System.out.println("Здравей Соня");
+                break;
+
+            case 3:
+                System.out.println("Здравей Поли");
+                break;
+
+            case 2:
+                System.out.println("Здравей Деси");
+                break;
+            case 1:
+                System.out.println("Здравей Петя");
+
+                break;
+            case 0:
+            System.out.println("Ауч");
+            break;
+
+
+        }
+
+
+    }
+}
