@@ -1,0 +1,201 @@
+package com.company;
+import java.util.Random;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner Input = new Scanner(System.in);
+        System.out.print("Enter the size of the array : ");
+        int SizeOfArray = Input.nextInt();
+        int[] array = new int[SizeOfArray];
+
+    }
+
+    public static void FillYourArray(int SizeOfArray, int[] array) {
+        for (int i = 0; i < SizeOfArray; i++) {
+            Scanner Input = new Scanner(System.in);
+            int number;
+            do {
+                System.out.println("Enter number value: ");
+                array[i] = Input.nextInt();
+                number = array[i];
+            } while (number < 0 || number > 100);
+            System.out.println("FilledArray :" + number);
+        }
+    }
+
+    public static void PrintYourArray(int[] array) {
+        for (int index : array) {
+            System.out.print(index);
+        }
+    }
+
+    public static void AscendingSorting(int[] array) {
+        int temp;
+        int i;
+        int j;
+
+        for (i = 0; i < array.length - 1; i++) {
+            for (j = 0; j < array.length - i - 1; j++) {
+                if (array[j] < array[j + 1]) {
+                    temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j] = temp;
+                    System.out.println("AscendingSorting :" + temp);
+                }
+            }
+        }
+    }
+
+    public static void DescendingSorting(int[] array) {
+        int temp;
+        int i;
+        int j;
+
+        for (i = 0; i < array.length - 1; i++) {
+            for (j = 0; j < array.length - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                    System.out.println("DescendingSorting :" + temp);
+                }
+            }
+        }
+
+    }
+
+    public static void RandomSortingOfNumbers(int[] array) {
+        int i;
+        int temp;
+        int randomNumber;
+
+
+        Random random = new Random();
+        for (i = 0; i < array.length; i++) {
+            randomNumber = random.nextInt(array.length);
+            temp = array[i];
+            array[i] = array[randomNumber];
+            array[randomNumber] = temp;
+            System.out.println("RandomNumbers :" + temp);
+        }
+
+
+    }
+
+    public static void SumOfAllNumbers(int[] array) {
+        int i;
+
+        for (i = 0; i < array.length; i++) {
+            int sum = 0;
+            sum += array[i];
+            System.out.println("Summed number :" + sum);
+        }
+
+    }
+
+    public static void BiggestNumberInArray(int[] array) {
+        int count = 0;
+        int i;
+        for (i = 0; i < array.length; i++) {
+            if (count < array[i])
+                count = array[i];
+            System.out.println("Biggest number in array:" + count);
+        }
+
+    }
+
+    public static void SmallestNumberInArray(int[] array) {
+        int count = 0;
+        int i;
+        for (i = 0; i < array.length; i++) {
+            if (count > array[i])
+                count = array[i];
+            System.out.println("Smallest number in array:" + count);
+        }
+    }
+
+    public static void AverageNumbers(int[] array) {
+        double sum = 0;
+        for (int i = 0; i < array.length; i++) {
+            sum += array[i];
+            System.out.println("Average number of array " + sum / array.length);
+        }
+    }
+
+    public static void isArraySymmetrical(int[] array) {
+        int i;
+        for (i = 0; i < array.length; i++) {
+            if (i > array.length / 2) {
+                System.out.println("Array is symmetrical");
+            } else if (array[i] != array[array.length - 1 - i]) ;
+            System.out.println("Not symmetrical");
+
+        }
+
+
+    }
+
+    public static void ReverseOfArray(int[] array) {
+        int i;
+        int temp;
+        for (i = 0; i < array.length / 2; i++) {
+            temp = array[i];
+            array[i] = array[array.length - i - 1];
+            array[array.length - i - 1] = temp;
+            System.out.println("Reverse numbers from array :" + temp);
+        }
+    }
+
+    public static void UserMenu() {
+        System.out.println("1. Сортиране на въведените числа във възходящ ред");
+        System.out.println("2. Сортиране на въведените числа в низходящ ред");
+        System.out.println("3. Търсене на позиция на конкретно число");
+        System.out.println("4. Разбъркване на числата");
+        System.out.println("5. Изчисляване на сбора на всички числа");
+        System.out.println("6. Намиране на най-голямото число");
+        System.out.println("7. Намиране на най-малкото число");
+        System.out.println("8. Намиране средно-аритметично на числата");
+        System.out.println("9. Проверка за симетричност на масива от числа");
+        System.out.println("10. Обръщане на масива от числа");
+        System.out.println("11. Визуализирай въведените числа");
+    }
+
+    public static void OptionList(int arraySize, int[] array) {
+        Scanner input = new Scanner(System.in);
+        int options = input.nextInt();
+        switch (options) {
+            case 0:
+                DescendingSorting(array);
+                break;
+            case 1:
+                AscendingSorting(array);
+                break;
+            case 2:
+                RandomSortingOfNumbers(array);
+                break;
+            case 3:
+                SumOfAllNumbers(array);
+                break;
+            case 4:
+                BiggestNumberInArray(array);
+                break;
+            case 5:
+                SmallestNumberInArray(array);
+                break;
+            case 6:
+                AverageNumbers(array);
+                break;
+            case 7:
+                isArraySymmetrical(array);
+                break;
+            case 8:
+                ReverseOfArray(array);
+                break;
+
+            default:
+                UserMenu();
+        }
+
+
+    }
+}
