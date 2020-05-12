@@ -7,6 +7,7 @@ public class Main {
         System.out.print("Enter the size of the array : ");
         int SizeOfArray = Input.nextInt();
         int[] array = new int[SizeOfArray];
+        UserMenu();
 
     }
 
