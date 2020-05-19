@@ -1,0 +1,239 @@
+package com.company;
+import java.util.HashMap;
+import java.util.Scanner;
+
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner Input = new Scanner(System.in);
+        System.out.print("Enter the size of the array : ");
+        int SizeOfArray = Input.nextInt();
+        int[] array = new int[SizeOfArray];
+
+        FillYourArray(SizeOfArray, array);
+        printMainMenu();
+        OptionList(array);
+
+
+    }
+
+    public static void FillYourArray(int SizeOfArray, int[] array) {
+        for (int i = 0; i < SizeOfArray; i++) {
+            Scanner Input = new Scanner(System.in);
+            int number;
+            do {
+                System.out.print("Enter number value: ");
+                array[i] = Input.nextInt();
+                number = array[i];
+            } while (number < 0 || number > 10000);
+            System.out.println("FilledArray :" + number);
+        }
+
+    }
+
+
+    public static void printMenuNumber() {
+        System.out.println("1. PrintPrimeNumbers\n" +
+                "2. CommonestElementOfArray\n" +
+                "3. MaxOfConsistlentlyIncreasingElementsOfArray\n" +
+                "4. MinOfConsistlentlyIncreasingElementsOfArray\n" +
+                "5. MaxRowOfElementIntheArray\n" +
+                "6.Output a sequence of numbers from an array that have a sum of  equal to a number generated at random\n"
+                +
+                "7. Back to the main menu");
+
+    }
+
+    public static void OptionList(int[] array) {
+
+        Scanner input = new Scanner(System.in);
+        int options = input.nextInt();
+        while (true) {
+            switch (options) {
+                case 1:
+                    PrintPrimeNumbers(array);
+                    break;
+                case 2:
+                    CommonestElementOfArray(array);
+                    break;
+                case 3:
+                    MaxOfConsistlentlyIncreasingElementsOfArray(array);
+                    break;
+                case 4:
+                    MinOfConsistlentlyIncreasingElementsOfArray(array);
+                    break;
+                case 5:
+                    MaxRowOfElementIntheArray(array);
+                    break;
+                case 7:
+                    MainMenuOptions();
+                    break;
+                case 8:
+                    return;
+
+            }
+            printMenuNumber();
+            options = input.nextInt();
+
+        }
+    }
+
+
+    public static void PrintPrimeNumbers(int[] array) {
+
+
+        for (int i = 0; i < array.length; i++) {
+            boolean isPrimeNumber = true;
+            if (array[i] == 1)
+                isPrimeNumber = false;
+            else {
+
+                for (int j = 2; j <= array[i] / 2; j++) {
+                    if (array[i] % j == 0) {
+                        isPrimeNumber = false;
+                        break;
+                    }
+                }
+            }
+
+            if (isPrimeNumber)
+                System.out.println(array[i] + " is prime number   ");
+        }
+    }
+
+    public static void CommonestElementOfArray(int[] array) {
+        int counter = 0;
+        int mostCommonest = 0;
+        int maxCounted = 0;
+        for (int element : array) {
+            for (int value : array) {
+                if (element == value) {
+                    counter++;
+                }
+            }
+            if (counter >= maxCounted) {
+                maxCounted = counter;
+                mostCommonest = element;
+            }
+            counter = 0;
+        }
+        System.out.printf("Most commonest element is %d counted %d time/times %n", mostCommonest, maxCounted);
+    }
+
+    public static void MaxOfConsistlentlyIncreasingElementsOfArray(int[] array) {
+
+        int Element = 1;
+        int maxElement = 1;
+        int counter = 0;
+        int lastElement = 0;
+
+
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] + 1 == array[i + 1]) {
+                Element++;
+                if (Element > maxElement) {
+                    maxElement = Element;
+                    lastElement = i + 1;
+                    counter = lastElement - maxElement + 1;
+                }
+            } else Element = 1;
+        }
+
+        for (int i = counter; i < maxElement + counter; i++)
+            System.out.println(" Consistlently increasing elements of array\n " + array[i]);
+
+    }
+
+    public static void MinOfConsistlentlyIncreasingElementsOfArray(int[] array) {
+        int Element = 1;
+        int maxElement = 1;
+        int counter = 0;
+        int lastElement = 0;
+
+
+        for (int i = 0; i < array.length - 1; i++) {
+            if (array[i] > array[i + 1]) {
+                Element++;
+                if (Element >= maxElement) {
+                    maxElement = Element;
+                    lastElement = i + 1;
+                    counter = lastElement - maxElement + 1;
+                }
+            } else Element = 1;
+        }
+
+        for (int i = counter; i < maxElement + counter; i++)
+            System.out.println(" Consistlently decreasing elements of array\n " + array[i]);
+    }
+
+    public static void MaxRowOfElementIntheArray(int[] array) {
+        int counter = 0;
+        int number = 0;
+        int maxCounted = 1;
+
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] == array[i - 1]) {
+                counter++;
+
+                if (counter > maxCounted) {
+                    maxCounted = counter;
+                    number = array[i];
+                }
+            } else
+                counter = 1;
+        }
+
+        for (int i = 0; i < maxCounted; i++) ;
+        System.out.println("Maximum row of numbers from array : " + number);
+
+    }
+
+    public static void printMainMenu() {
+        System.out.println("Мain menu");
+        System.out.println("1. NumbersMenu ");
+        System.out.println("2. WordsMenu ");
+        System.out.println("3. ExitMainMenu ");
+    }
+
+    public static void MainMenuOptions() {
+        Scanner input = new Scanner(System.in);
+        int options = input.nextInt();
+        while (true) {
+            switch (options) {
+                case 1:
+                    printMenuNumber();
+                    break;
+                case 2:
+                    WordsMenu();
+
+                    return;
+
+            }
+            options = input.nextInt();
+
+        }
+    }
+
+    public static void WordsMenu() {
+        System.out.println("1. Reverseletters\n" +
+                "2. Display the number of recurring characters for each of the words in the array\n" +
+                "3.Display the number of characters for each of the words in the array\n" +
+                "4. CountingRepeatingWords\n" +
+                "5. Back to the main menu\n");
+    }
+
+    public static void ReversedLetters() {
+        Scanner in = new Scanner(System.in);
+        System.out.print("\nInput a word: ");
+        String word = in.nextLine();
+        word = word.trim();
+        String result = "";
+        char[] ch = word.toCharArray();
+        for (int i = ch.length - 1; i >= 0; i--) {
+            result += ch[i];
+        }
+        System.out.println("Reverse word: " + result.trim());
+    }
+
+}
